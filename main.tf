@@ -438,7 +438,7 @@ helm install -n spin stable/spinnaker --namespace spinnaker -f ${local_file.spin
 helm install istio.io/istio-init --name istio-init --namespace istio-system --kubeconfig=${local_file.kubeconfig.filename}
 bash forward_spin_gate.sh
 helm install istio.io/istio --name istio --namespace istio-system -f ${local_file.istio_chart.filename} --kubeconfig=${local_file.kubeconfig.filename}
-bash forward_istio.sh
+bash forward_ports.sh
 LOCAL_EXEC
   }
   depends_on = ["google_container_node_pool.primary","local_file.kubeconfig","kubernetes_namespace.spinnaker","local_file.spinnaker_chart","google_storage_bucket_iam_binding.spinnaker-bucket-iam","google_pubsub_subscription_iam_binding.spinnaker_pubsub_iam_read","local_file.spinnaker_install_sh"]
