@@ -434,7 +434,6 @@ kubectl apply -f create-helm-service-account.yml --kubeconfig=${local_file.kubec
 helm init --service-account helm --upgrade --wait --kubeconfig=${local_file.kubeconfig.filename}
 kubectl label namespace dev istio-injection=enabled --kubeconfig=${local_file.kubeconfig.filename}
 kubectl label namespace prod istio-injection=enabled --kubeconfig=${local_file.kubeconfig.filename}
-kubectl label namespace spinnaker istio-injection=enabled --kubeconfig=${local_file.kubeconfig.filename}
 helm install -n spin stable/spinnaker --namespace spinnaker -f ${local_file.spinnaker_chart.filename} --timeout 600 --version 1.8.1 --wait --kubeconfig=${local_file.kubeconfig.filename}
 helm install istio.io/istio-init --name istio-init --namespace istio-system --kubeconfig=${local_file.kubeconfig.filename}
 bash forward_spin_gate.sh
